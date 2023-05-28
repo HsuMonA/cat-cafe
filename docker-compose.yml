@@ -1,0 +1,21 @@
+version: "3.1"
+
+services:
+  database:
+    image: mysql:8.0.33
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-!ROOTChangeMe!}
+      MYSQL_USER: ${MYSQL_USER:-app}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-!ChangeMe!}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-app}
+    volumes:
+      # folder of my database
+      - database_data:/var/lib/mysql:rw
+      # configuration file
+      - ./my.cnf:/etc/mysql/my.cnf
+    ports:
+      - 3306:3306
+
+volumes:
+  database_data:
