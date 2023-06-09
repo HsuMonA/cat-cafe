@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Booking;
+use App\Entity\User;
 use App\Form\BookingType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -29,8 +30,17 @@ class BookingController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // TODO: Save in database
+            $user = new User();
 
+            $user->setFirstName($form->get('firstName')->getData());
+            $user->setLastName($form->get('lastName')->getData());
+            $user->setEmail($form->get('email')->getData());
+            $user->setTelephoneNumber($form->get('telephoneNumber')->getData());
+
+            $booking->setUser($user);
+
+            // persist is required when a new object/instance is created.
+            $this->em->persist($user);
             $this->em->persist($booking);
             $this->em->flush();
         }
