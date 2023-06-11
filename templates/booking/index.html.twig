@@ -4,9 +4,36 @@
 {% endblock %}
 
 {% block body %}
+	<div class="container fluid">
+		<p class="fw-bold mt-3">Please enter the informations:</p>
 
-	{{ form_start(form) }}
-	
-	{{ form_end(form) }}
+		{{ form_start(form, {'attr': {'class': 'row'} }) }}
+		<div class="col-md-6">
+			{{ form_row(form.firstName) }}
+		</div>
+		<div class="col-md-6">
+			{{ form_row(form.lastName) }}
+		</div>
+		<div class="col-md-6">
+			{{ form_row(form.email) }}
+		</div>
+		<div class="col-md-6">
+			{{ form_row(form.telephoneNumber) }}
+		</div>
+		<div class="col-md-6">
+			{{ form_row(form.date) }}
+		</div>
+		<!-- Force next columns to break to new line -->
+		<div class="w-100"></div>
+		<div class="col-md-6">
+			{{ form_row(form.numberOfPersons) }}
+		</div>
+		{{ form_row(form.service) }}
+		<div class="d-flex gap-3">
+			{{ form_row(form.submit) }}
+			{{ form_row(form.cancel) }}
+		</div>
+		{{ form_end(form) }}
+	</div>
 
 {% endblock %}
