@@ -29,14 +29,16 @@ class BookingType extends AbstractType
                 'constraints' => [
                     new Assert\NotBlank(),
                     new Assert\Length(['max' => 100])
-                ]
+                ],
+                'attr' => ['maxlength' => 100]
             ])
             ->add('lastName', TextType::class, [
                 'mapped' => false,
                 'constraints' => [
                     new Assert\NotBlank(),
                     new Assert\Length(['max' => 100])
-                ]
+                ],
+                'attr' => ['maxlength' => 100]
             ])
             ->add('email', EmailType::class, [
                 'mapped' => false,
@@ -44,17 +46,25 @@ class BookingType extends AbstractType
                     new Assert\Email(),
                     new Assert\NotBlank(),
                     new Assert\Length(['max' => 200])
-                ]
+                ],
+                'attr' => ['maxlength' => 200]
             ])
             ->add('telephoneNumber', TelType::class, [
                 'mapped' => false,
                 'constraints' => [
                     new Assert\NotBlank(),
                     new Assert\Length(['max' => 50])
-                ]
+                ],
+                'attr' => ['maxlength' => 50]
             ])
             ->add('date', DateTimeType::class, ['constraints' => [new Assert\GreaterThan('today')]])
-            ->add('numberOfPersons', IntegerType::class, ['constraints' => [new Assert\Range(['min' => 1, 'max' => 5])]])
+            ->add(
+                'numberOfPersons', IntegerType::class,
+                [
+                    'constraints' => [new Assert\Range(['min' => 1, 'max' => 5])],
+                    'attr' => ['min' => 1, 'max' => 5]
+                ],
+            )
             ->add('service', EntityType::class, [
                 'class' => Service::class,
                 'choice_label' => 'type',
@@ -63,7 +73,7 @@ class BookingType extends AbstractType
                 'expanded' => true,
                 'constraints' => [
                     new Assert\NotBlank(),
-                ]
+                ],
             ])
             ->add('submit', SubmitType::class, ['label' => 'Submit'])
             ->add('cancel', ButtonType::class, ['label' => 'Cancel'])
