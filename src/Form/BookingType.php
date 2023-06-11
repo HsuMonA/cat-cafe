@@ -67,7 +67,9 @@ class BookingType extends AbstractType
             )
             ->add('service', EntityType::class, [
                 'class' => Service::class,
-                'choice_label' => 'type',
+                'choice_label' => function (Service $service) {
+                    return "{$service->getType()}  \${$service->getPrice()}";
+                },
                 // used to render a select box, check boxes or radios
                 'multiple' => false,
                 'expanded' => true,
