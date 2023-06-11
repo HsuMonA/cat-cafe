@@ -8,26 +8,14 @@
 		<p class="fw-bold mt-3">Please enter the informations:</p>
 
 		{{ form_start(form, {'attr': {'class': 'row'} }) }}
-		<div class="col-md-6">
-			{{ form_row(form.firstName) }}
-		</div>
-		<div class="col-md-6">
-			{{ form_row(form.lastName) }}
-		</div>
-		<div class="col-md-6">
-			{{ form_row(form.email) }}
-		</div>
-		<div class="col-md-6">
-			{{ form_row(form.telephoneNumber) }}
-		</div>
-		<div class="col-md-6">
-			{{ form_row(form.date) }}
-		</div>
+		{{ form_row(form.firstName, {'row_attr': {'class': 'col-md-6 mb-3'} }) }}
+		{{ form_row(form.lastName, {'row_attr': {'class': 'col-md-6 mb-3'} }) }}
+		{{ form_row(form.email, {'row_attr': {'class': 'col-md-6 mb-3'} }) }}
+		{{ form_row(form.telephoneNumber, {'row_attr': {'class': 'col-md-6 mb-3'} }) }}
+		{{ form_row(form.date, {'row_attr': {'class': 'col-md-6 mb-3'} }) }}
 		<!-- Force next columns to break to new line -->
 		<div class="w-100"></div>
-		<div class="col-md-6">
-			{{ form_row(form.numberOfPersons) }}
-		</div>
+		{{ form_row(form.numberOfPersons, {'row_attr': {'class': 'col-md-6 mb-3'} }) }}
 		{{ form_row(form.service) }}
 		<div class="d-flex gap-3">
 			{{ form_row(form.submit) }}
@@ -35,5 +23,4 @@
 		</div>
 		{{ form_end(form) }}
 	</div>
-
 {% endblock %}
