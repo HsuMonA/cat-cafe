@@ -4,23 +4,28 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container fluid">
-		<p class="fw-bold mt-3">Please enter the informations:</p>
+	<div class="main">
 
-		{{ form_start(form, {'attr': {'class': 'row'} }) }}
-		{{ form_row(form.firstName, {'row_attr': {'class': 'col-md-6 mb-3'} }) }}
-		{{ form_row(form.lastName, {'row_attr': {'class': 'col-md-6 mb-3'} }) }}
-		{{ form_row(form.email, {'row_attr': {'class': 'col-md-6 mb-3'} }) }}
-		{{ form_row(form.telephoneNumber, {'row_attr': {'class': 'col-md-6 mb-3'} }) }}
-		{{ form_row(form.date, {'row_attr': {'class': 'col-md-6 mb-3'} }) }}
-		<!-- Force next columns to break to new line -->
-		<div class="w-100"></div>
-		{{ form_row(form.numberOfPersons, {'row_attr': {'class': 'col-md-6 mb-3'} }) }}
-		{{ form_row(form.service) }}
-		<div class="d-flex gap-3">
-			{{ form_row(form.submit) }}
-			{{ form_row(form.cancel) }}
+		<div class="form-container position-absolute top-50 start-50 translate-middle rounded">
+			<h1 class="title text-center">Reservation</h1>
+			<p class="text fw-bold mt-3">Please fill out the form:</p>
+
+			{{ form_start(form, {'attr': {'class': 'row'} }) }}
+			{{ form_row(form.firstName, {'row_attr': {'class': 'col-md-6 mb-3'} }) }}
+			{{ form_row(form.lastName, {'row_attr': {'class': 'col-md-6 mb-3'} }) }}
+			{{ form_row(form.email, {'row_attr': {'class': 'col-md-6 mb-3'} }) }}
+			{{ form_row(form.telephoneNumber, {'row_attr': {'class': 'col-md-6 mb-3'} }) }}
+			{{ form_row(form.date, {'row_attr': {'class': 'col-md-6 mb-3'} }) }}
+			<!-- Force next columns to break to new line -->
+			<div class="w-100"></div>
+			{{ form_row(form.numberOfPersons, {'row_attr': {'class': 'col-md-6 mb-3'} }) }}
+			{{ form_row(form.service) }}
+			<div class="d-flex gap-3">
+				{{ form_row(form.submit) }}
+				{{ form_row(form.cancel) }}
+			</div>
+			{{ form_end(form) }}
 		</div>
-		{{ form_end(form) }}
 	</div>
+	
 {% endblock %}
